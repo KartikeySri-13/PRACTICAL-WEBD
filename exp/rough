@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Formatting</title>
+</head>
+<del>rough</del>
+<ins>rough</ins>
+<mark>rough</mark>
+<sub>rough</sub>
+<sup>rough</sup>
+<tr>rough
+<th>for bold</th>
+<td>normal font</td>
+
+</tr>
+
+</html>

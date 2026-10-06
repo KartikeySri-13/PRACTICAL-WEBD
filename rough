@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Formatting</title>
+</head>
+<body>
+    <table border="1">
+        <caption>Class Timetable</caption>
+        <tr>
+           <th >Day/Time</th>
+           <th >08:50-09:40</th>
+           <th >9:40-10:30</th>
+           <th >10:40-11:30</th>
+           <th >11:30-12:20</th>
+           <th>12:20-01:10</th>
+           <th>01:10-02:00</th>
+           <th>02:00-02:50</th>
+           <th>02:50-03:40</th>
+           <th>03:40-04:30</th>
+
+        </tr>
+
+</body>
+</html>
