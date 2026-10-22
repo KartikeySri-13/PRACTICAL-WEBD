@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chill Point — Ghaziabad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    --brown-950: #241609;
+    --brown-900: #2f1d0f;
+    --paper: #e9dcc0;
+    --paper-soft: #f1e7d2;
+    --mustard: #c28a2e;
+    --mustard-deep: #9c6d1f;
+    --green: #48583f;
+    --brick: #8a3b2c;
+    --ink: #241609;
+    --ink-soft: #55432f;
+    --line: rgba(36, 22, 9, 0.16);
+
+    --bg: var(--paper);
+    --bg-soft: var(--paper-soft);
+    --surface: #fbf5e7;
+    --text: var(--ink);
+    --text-soft: var(--ink-soft);
+    --accent: var(--mustard);
+    --accent-deep: var(--mustard-deep);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: var(--brown-950);
+      --bg-soft: #2a1a0c;
+      --surface: #34210f;
+      --text: #f1e4c8;
+      --text-soft: #c8b58f;
+      --line: rgba(241, 228, 200, 0.14);
+      --accent: #d9a13f;
+      --accent-deep: #e8b869;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: var(--brown-950);
+    --bg-soft: #2a1a0c;
+    --surface: #34210f;
+    --text: #f1e4c8;
+    --text-soft: #c8b58f;
+    --line: rgba(241, 228, 200, 0.14);
+    --accent: #d9a13f;
+    --accent-deep: #e8b869;
+  }
+
+  * { box-sizing: inherit; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px));
+  }
+
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  body {
+    font-family: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--text);
+  }
+
+  p { margin: 0; }
+  a { color: inherit; }
+
+  img, svg { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding-left: clamp(20px, 5vw, 56px);
+    padding-right: clamp(20px, 5vw, 56px);
+  }
+
+  /* ---------- Header ---------- */
+
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    padding-top: env(safe-area-inset-top, 0px);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: "Fraunces", serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .wordmark .dot { color: var(--accent); font-size: 1.4rem; line-height: 0; }
+
+  nav.links {
+    display: flex;
+    gap: clamp(16px, 3vw, 32px);
+  }
+  nav.links a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  nav.links a:hover, nav.links a:focus-visible { color: var(--text); border-color: var(--accent); }
+
+  @media (max-width: 620px) {
+    nav.links { gap: 14px; }
+    nav.links a { font-size: 0.85rem; }
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    padding: clamp(48px, 9vw, 108px) 0 clamp(56px, 8vw, 96px);
+    position: relative;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(24px, 5vw, 56px);
+    align-items: center;
+  }
+
+  @media (max-width: 780px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-art { order: -1; max-width: 260px; margin: 0 auto; }
+  }
+
+  .eyebrow-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  .eyebrow-line svg { width: 18px; height: 18px; flex: none; }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.1rem);
+    line-height: 1.03;
+    max-width: 12ch;
+  }
+
+  .hero .lede {
+    margin-top: 22px;
+    max-width: 46ch;
+    font-size: 1.1rem;
+    color: var(--text-soft);
+  }
+
+  .cta-row {
+    margin-top: 34px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: 3px;
+    font-size: 0.98rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .btn-primary {
+    background: var(--brick);
+    color: #f6ead4;
+  }
+  .btn-primary:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--brick) 88%, black); }
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--text);
+  }
+  .btn-ghost:hover { border-color: var(--text-soft); }
+
+  /* hero illustration */
+  .hero-art svg { width: 100%; height: auto; }
+
+  .steam-line {
+    stroke: var(--text-soft);
+    stroke-width: 3;
+    stroke-linecap: round;
+    fill: none;
+    opacity: 0.7;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .steam-1 { animation: rise 4.5s ease-in-out infinite; }
+    .steam-2 { animation: rise 4.5s ease-in-out infinite 0.9s; }
+    .steam-3 { animation: rise 4.5s ease-in-out infinite 1.8s; }
+    @keyframes rise {
+      0%   { transform: translateY(6px); opacity: 0; }
+      25%  { opacity: 0.75; }
+      70%  { opacity: 0.35; }
+      100% { transform: translateY(-18px); opacity: 0; }
+    }
+  }
+
+  /* ---------- Section shell ---------- */
+
+  section { padding: clamp(56px, 9vw, 104px) 0; }
+  .divider { border: none; border-top: 1px solid var(--line); margin: 0; }
+
+  .section-head { max-width: 58ch; margin-bottom: clamp(32px, 5vw, 52px); }
+  .kicker {
+    color: var(--accent-deep);
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+  .section-head h2 {
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    line-height: 1.12;
+  }
+
+  /* ---------- About ---------- */
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(28px, 5vw, 64px);
+    align-items: start;
+  }
+  @media (max-width: 780px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+
+  .about-grid p + p { margin-top: 1.1em; }
+  .about-grid .lede-text { font-size: 1.06rem; color: var(--text-soft); max-width: 56ch; }
+
+  .about-figure {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px;
+  }
+  .about-figure svg { width: 100%; height: auto; }
+  .about-figure figcaption {
+    margin-top: 14px;
+    font-size: 0.88rem;
+    color: var(--text-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: clamp(24px, 5vw, 44px);
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .stat b {
+    display: block;
+    font-family: "Fraunces", serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--accent-deep);
+  }
+  .stat span { font-size: 0.9rem; color: var(--text-soft); }
+
+  /* ---------- Gallery ---------- */
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .gallery-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .gallery-card .art {
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+  }
+  .gallery-card .art svg { width: 100%; height: 100%; }
+  .gallery-card .cap {
+    padding: 14px 16px 18px;
+    border-top: 1px solid var(--line);
+  }
+  .gallery-card .cap b {
+    display: block;
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: 1.02rem;
+    margin-bottom: 3px;
+  }
+  .gallery-card .cap span { font-size: 0.86rem; color: var(--text-soft); }
+
+  .gallery-card:nth-child(2) .art { background: color-mix(in srgb, var(--green) 10%, transparent); }
+  .gallery-card:nth-child(4) .art { background: color-mix(in srgb, var(--brick) 8%, transparent); }
+
+  /* ---------- Visit / hours ---------- */
+
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(28px, 5vw, 64px);
+  }
+  @media (max-width: 780px) { .visit-grid { grid-template-columns: 1fr; } }
+
+  .hours-table { width: 100%; border-collapse: collapse; margin-top: 22px; }
+  .hours-table tr { border-top: 1px solid var(--line); }
+  .hours-table tr:last-child { border-bottom: 1px solid var(--line); }
+  .hours-table td { padding: 13px 0; font-size: 0.98rem; }
+  .hours-table td:last-child { text-align: right; color: var(--text-soft); font-variant-numeric: tabular-nums; }
+  .hours-table td:first-child { font-family: "Fraunces", serif; }
+
+  .addr-block { font-size: 1.02rem; color: var(--text-soft); margin-top: 14px; line-height: 1.7; }
+  .addr-block strong { color: var(--text); font-weight: 500; }
+
+  .map-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 26px;
+    height: fit-content;
+  }
+  .map-card svg { width: 100%; height: auto; }
+  .map-note {
+    margin-top: 16px;
+    font-size: 0.88rem;
+    color: var(--text-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 40px 0 calc(40px + env(safe-area-inset-bottom, 0px));
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.88rem;
+    color: var(--text-soft);
+  }
+  .footer-row a { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* scroll container safety for any wide content */
+  .scrollx { overflow-x: auto; }
+
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a class="wordmark" href="#top">Chill Point<span class="dot">.</span></a>
+    <nav class="links">
+      <a href="#story">Story</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-line">
+          <svg viewBox="0 0 24 24"><path class="steam-line" d="M6 21c3-2 3-4 0-6M12 21c3-2 3-4 0-6M18 21c3-2 3-4 0-6" stroke-width="2"/></svg>
+          A small cafe in Ghaziabad
+        </div>
+        <h1>A quiet corner, poured slow.</h1>
+        <p class="lede">Chill Point started with one filter and a handful of chairs we couldn't stop rearranging. It's still that — a small room that asks nothing of you except to stay a while.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#visit">Find us</a>
+          <a class="btn btn-ghost" href="#story">Our story</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 320 340" xmlns="http://www.w3.org/2000/svg">
+          <g class="steam-1"><path class="steam-line" d="M120 70c-10 14 10 20 0 34s10 20 0 34"/></g>
+          <g class="steam-2"><path class="steam-line" d="M160 60c-10 14 10 20 0 34s10 20 0 34"/></g>
+          <g class="steam-3"><path class="steam-line" d="M200 70c-10 14 10 20 0 34s10 20 0 34"/></g>
+          <path d="M80 170h150l-10 90c-2 22-20 38-42 38h-56c-22 0-40-16-42-38l-10-90z" fill="none" stroke="var(--ink, #241609)" stroke-width="3" opacity="0.85"/>
+          <path d="M230 185c26-4 40 12 38 32-2 18-20 28-42 24" fill="none" stroke="var(--ink, #241609)" stroke-width="3" opacity="0.85"/>
+          <path d="M80 170h150" stroke="var(--accent, #c28a2e)" stroke-width="4"/>
+          <ellipse cx="155" cy="300" rx="95" ry="8" fill="var(--ink, #241609)" opacity="0.08"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="story">
+    <div class="wrap about-grid">
+      <div class="about-figure">
+        <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="130" width="200" height="70" rx="2" fill="none" stroke="var(--text, #241609)" stroke-width="2.5" opacity="0.7"/>
+          <line x1="20" y1="155" x2="220" y2="155" stroke="var(--text, #241609)" stroke-width="2" opacity="0.35"/>
+          <circle cx="60" cy="175" r="9" fill="var(--accent, #c28a2e)" opacity="0.9"/>
+          <circle cx="90" cy="175" r="9" fill="var(--accent, #c28a2e)" opacity="0.55"/>
+          <circle cx="120" cy="175" r="9" fill="var(--accent, #c28a2e)" opacity="0.9"/>
+          <path d="M40 130c0-40 30-70 70-70s70 30 70 70" fill="none" stroke="var(--text, #241609)" stroke-width="2.5" opacity="0.7"/>
+          <path d="M75 90c8-10 20-14 35-14" fill="none" stroke="var(--text, #241609)" stroke-width="1.5" opacity="0.3"/>
+        </svg>
+        <figcaption>The pass-through window, where most mornings start.</figcaption>
+      </div>
+
+      <div>
+        <div class="kicker">How it began</div>
+        <h2>Three chairs, one filter, and a landlord who liked the smell</h2>
+        <p class="lede-text">We opened Chill Point in a lane just off the main road, in a space barely big enough for the counter and a window seat. The first batch of filter coffee was for ourselves — the second was for whoever wandered in asking what smelled so good.</p>
+        <p class="lede-text">Everything here is built around slowness: coffee brewed in small batches, chai stirred by hand, and a room with nowhere you need to be. Regulars know the corner table by the plant. New faces usually end up there too, eventually.</p>
+        <div class="stat-row">
+          <div class="stat"><b>2019</b><span>The year we opened</span></div>
+          <div class="stat"><b>7am–11pm</b><span>Open most days</span></div>
+          <div class="stat"><b>3</b><span>Original chairs, still here</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">A look inside</div>
+        <h2>Small rooms, held onto</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <div class="art">
+            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="none" stroke="var(--text, #241609)" stroke-width="2.5" opacity="0.8"/><path d="M50 24c8 8 8 16 0 24s-8 16 0 24" fill="none" stroke="var(--accent, #c28a2e)" stroke-width="4"/></svg>
+          </div>
+          <div class="cap"><b>Latte, most mornings</b><span>Poured a little different each time</span></div>
+        </div>
+        <div class="gallery-card">
+          <div class="art">
+            <svg viewBox="0 0 100 100"><path d="M30 70c0-22 9-40 20-40s20 18 20 40" fill="none" stroke="var(--green, #48583f)" stroke-width="2.5"/><line x1="20" y1="70" x2="80" y2="70" stroke="var(--text, #241609)" stroke-width="2.5" opacity="0.8"/></svg>
+          </div>
+          <div class="cap"><b>The window nook</b><span>Best seat before 9am</span></div>
+        </div>
+        <div class="gallery-card">
+          <div class="art">
+            <svg viewBox="0 0 100 100"><rect x="25" y="35" width="50" height="38" rx="4" fill="none" stroke="var(--text, #241609)" stroke-width="2.5" opacity="0.8"/><path d="M75 45h8a8 8 0 010 16h-8" fill="none" stroke="var(--text, #241609)" stroke-width="2.5" opacity="0.8"/><line x1="33" y1="35" x2="33" y2="27" stroke="var(--accent, #c28a2e)" stroke-width="3"/><line x1="50" y1="35" x2="50" y2="25" stroke="var(--accent, #c28a2e)" stroke-width="3"/><line x1="67" y1="35" x2="67" y2="27" stroke="var(--accent, #c28a2e)" stroke-width="3"/></svg>
+          </div>
+          <div class="cap"><b>Chai, on request</b><span>Made the way our nani taught us</span></div>
+        </div>
+        <div class="gallery-card">
+          <div class="art">
+            <svg viewBox="0 0 100 100"><circle cx="35" cy="40" r="6" fill="var(--brick, #8a3b2c)" opacity="0.85"/><circle cx="50" cy="55" r="6" fill="var(--brick, #8a3b2c)" opacity="0.85"/><circle cx="65" cy="40" r="6" fill="var(--brick, #8a3b2c)" opacity="0.85"/><circle cx="45" cy="70" r="6" fill="var(--brick, #8a3b2c)" opacity="0.6"/><circle cx="60" cy="68" r="6" fill="var(--brick, #8a3b2c)" opacity="0.6"/></svg>
+          </div>
+          <div class="cap"><b>Beans, roasted nearby</b><span>From a roaster two towns over</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="visit">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Come by</div>
+        <h2>Location &amp; hours</h2>
+      </div>
+
+      <div class="visit-grid">
+        <div>
+          <div class="addr-block">
+            <strong>Chill Point</strong><br>
+            Near the main market lane<br>
+            Ghaziabad, Uttar Pradesh
+          </div>
+
+          <table class="hours-table">
+            <tr><td>Monday – Friday</td><td>7:00 am – 11:00 pm</td></tr>
+            <tr><td>Saturday – Sunday</td><td>8:00 am – 11:30 pm</td></tr>
+          </table>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#top">Get directions</a>
+            <a class="btn btn-ghost" href="#top">Call the cafe</a>
+          </div>
+        </div>
+
+        <div class="map-card" aria-hidden="true">
+          <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="60" x2="260" y2="60" stroke="var(--text, #241609)" stroke-width="2" opacity="0.25"/>
+            <line x1="0" y1="140" x2="260" y2="140" stroke="var(--text, #241609)" stroke-width="2" opacity="0.25"/>
+            <line x1="90" y1="0" x2="90" y2="200" stroke="var(--text, #241609)" stroke-width="2" opacity="0.25"/>
+            <line x1="180" y1="0" x2="180" y2="200" stroke="var(--text, #241609)" stroke-width="2" opacity="0.25"/>
+            <circle cx="130" cy="100" r="9" fill="var(--brick, #8a3b2c)"/>
+            <path d="M130 100c0-14 -18-16 -18-32a18 18 0 0136 0c0 16-18 18-18 32z" fill="none" stroke="var(--brick, #8a3b2c)" stroke-width="2.5"/>
+          </svg>
+          <div class="map-note">Two minutes off the main market lane — look for the plant in the window.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Chill Point, Ghaziabad</span>
+    <span><a href="#top">Back to top</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
